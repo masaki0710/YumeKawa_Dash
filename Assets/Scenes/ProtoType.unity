@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 247144112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -265,7 +265,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.31523672, g: 0.5301708, b: 0.8679245, a: 0}
+  m_BackGroundColor: {r: 0.2627451, g: 0.41568628, b: 0.52156866, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -314,8 +314,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.08717229, y: 0.8995905, z: -0.21045253, w: -0.37262273}
-  m_LocalPosition: {x: 12.674485, y: 8.872139, z: 12.674486}
+  m_LocalRotation: {x: 0.25000075, y: 0.45668605, z: -0.13544065, w: 0.84296703}
+  m_LocalPosition: {x: -8.629929, y: 9.239413, z: -6.4537363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703a9ceb7cc6dd14abc6f1c9f2b5d1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 7
   minJumpForce: 5
   maxJumpForce: 15
   chargeSpeed: 10
@@ -642,7 +643,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 806255960cdc8b140aa3c4f05e4a940b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -727,7 +728,7 @@ Transform:
   m_GameObject: {fileID: 1887714188}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

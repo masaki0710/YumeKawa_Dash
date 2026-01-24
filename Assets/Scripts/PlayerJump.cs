@@ -1,51 +1,81 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // 新しいInput Systemを利用するため追加
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; // 新しいInput Systemを利用するため追加
 
 public class PlayerJump : MonoBehaviour
 {
+
+    public float moveSpeed = 7f;
     public float minJumpForce = 5f; // 最小ジャンプ力
     public float maxJumpForce = 15f; // 最大ジャンプ力
     public float chargeSpeed = 10f; // 1秒間に溜まる力
 
     private Rigidbody rb;
     private bool isGrounded;
-
     private float currentJumpForce;
     private bool isCharging = false;
+    private Vector2 moveInput;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation; // 回転を固定
     }
 
+    [System.Obsolete]
     void Update()
     {
         if (Keyboard.current == null) return;
 
-        // 1. スペースキーを押し始めた瞬間（チャージ開始）
+        float rayLength = 0.6f;
+        Vector3 rayStart = transform.position;
+
+        bool hit = Physics.Raycast(rayStart, Vector3.down, out RaycastHit hitInfo, rayLength);
+
+        if (hit && hitInfo.collider.CompareTag("Platform"))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        Debug.DrawRay(rayStart, Vector3.down * rayLength, isGrounded? Color.green : Color.red);
+
+        // 自由移動
+        float x = 0f;
+        float z = 0f;
+
+        if (Keyboard.current.aKey.isPressed) z = 1f;
+        if (Keyboard.current.dKey.isPressed) z = -1f;
+        if (Keyboard.current.wKey.isPressed) x = 1f;
+        if (Keyboard.current.sKey.isPressed) x = -1f;
+        moveInput = new Vector2(x, z).normalized;
+
+        // ジャンプ
         if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
             isCharging = true;
             currentJumpForce = minJumpForce;
         }
 
-        // 2. 押し続けている間（チャージ中）
+        // ジャンプチャージ
         if (isCharging && Keyboard.current.spaceKey.isPressed)
         {
-            currentJumpForce += chargeSpeed * Time.deltaTime;
-
-            // 最大値を超えないように制限
-            if (currentJumpForce > maxJumpForce)
-            {
-                currentJumpForce = maxJumpForce;
-            }
+            currentJumpForce = Mathf.Min(currentJumpForce + chargeSpeed * Time.deltaTime, maxJumpForce);
         }
 
-        // 3. キーを離した瞬間（ジャンプ実行）
         if (isCharging && Keyboard.current.spaceKey.wasReleasedThisFrame)
         {
             Jump();
         }
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 currentVel = rb.linearVelocity;
+        rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, currentVel.y, moveInput.y * moveSpeed);
     }
 
     void Jump()
@@ -59,11 +89,13 @@ public class PlayerJump : MonoBehaviour
         currentJumpForce = 0f;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Platform"))
-        {
-            isGrounded = true;
-        }
-    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Platform")) isGrounded = true;
+    //}
+
+    //void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Platform")) isGrounded = false;
+    //}
 }
