@@ -72,6 +72,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
+
     void FixedUpdate()
     {
         Vector3 currentVel = rb.linearVelocity;
@@ -88,14 +89,4 @@ public class PlayerJump : MonoBehaviour
         isCharging = false;
         currentJumpForce = 0f;
     }
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Platform")) isGrounded = true;
-    //}
-
-    //void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Platform")) isGrounded = false;
-    //}
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
 {
-    public GameObject platformPrefab;
-    public float spawnInterval = 3f;
-
+    public GameObject[] modulePrefabs
+        ;
+    public float spawnInterval = 1.0f;
     private float timer;
 
     void Update()
@@ -14,12 +14,18 @@ public class PlatformSpawner : MonoBehaviour
         if (timer >= spawnInterval)
         {
             SpawnPlatform();
-            timer = 0f;
+            timer = 0;
         }
     }
 
     void SpawnPlatform()
     {
-        Instantiate(platformPrefab, transform.position, Quaternion.identity);
+        if (modulePrefabs.Length == 0) return;
+
+        // ランダムにプレハブを選択
+        int index = Random.Range(0, modulePrefabs.Length);
+
+        // 生成
+        Instantiate(modulePrefabs[index], transform.position, Quaternion.identity);
     }
 }
