@@ -569,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  platformSpeed: 2
   minJumpForce: 5
   maxJumpForce: 15
   chargeSpeed: 5
