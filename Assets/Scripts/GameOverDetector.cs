@@ -24,6 +24,11 @@ public class GameOverDetector : MonoBehaviour
         isGameOver = true;
         Debug.Log("Game Over!");
 
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.StartGameOverEffect(GameConfig.GameOverDelay);
+        }
+
         Time.timeScale = GameConfig.SlowMotionScale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
 
@@ -31,6 +36,6 @@ public class GameOverDetector : MonoBehaviour
 
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = 0.02f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("TitleScene");
     }
 }

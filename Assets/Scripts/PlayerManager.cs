@@ -85,12 +85,6 @@ public class PlayerManager : MonoBehaviour
             {
                 Jump();
 
-                if (MusicManager.Instance != null)
-                {
-                    MusicManager.Instance.SetPitch(1.0f);
-                    MusicManager.Instance.SetVolumeRatio(1.0f);
-                }
-
                 if (chargeAudioSource != null)
                 {
                     chargeAudioSource.Stop();
@@ -130,7 +124,7 @@ public class PlayerManager : MonoBehaviour
         rb.linearVelocity = new Vector3(moveVel.x + platformVel.x, yVel, moveVel.z);
 
         Vector3 clampedPosition = rb.position;
-        clampedPosition.z = Mathf.Clamp(clampedPosition.z, -3.5f, 3.5f);
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, -GameConfig.ObstacleFloorWidth/2.0f, GameConfig.ObstacleFloorWidth/2.0f);
 
         rb.position = clampedPosition;
     }

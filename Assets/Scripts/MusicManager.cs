@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
@@ -23,6 +25,66 @@ public class MusicManager : MonoBehaviour
         {
             defaultBgmVolume = bgmSource.volume;
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (bgmSource != null)
+        {
+            if (scene.name == "GameScene")
+            {
+                bgmSource.pitch = 1.0f;
+                bgmSource.volume = defaultBgmVolume;
+                if (!bgmSource.isPlaying)
+                {
+                    bgmSource.Play();
+                }
+            }
+            else
+            {
+                bgmSource.Stop();
+            }
+        }
+
+        bgmSource.pitch = 1.0f;
+        bgmSource.volume = defaultBgmVolume;
+
+    }
+
+    public void StartGameOverEffect(float duration)
+    {
+        StartCoroutine(FadeOutAndSlowDown(duration));
+    }
+
+    private IEnumerator FadeOutAndSlowDown(float duration)
+    {
+        float currentTime = 0f;
+        float startPitch = bgmSource.pitch;
+        float startVolume = bgmSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.unscaledDeltaTime;
+            float t = currentTime / duration;
+            if (bgmSource != null)
+            {
+                bgmSource.pitch = Mathf.Lerp(startPitch, 0.5f, t);
+                bgmSource.volume = Mathf.Lerp(startVolume, 0f, t);
+            }
+            yield return null;
+        }
+
+        bgmSource.Stop();
     }
 
     public void SetPitch(float pitch)
