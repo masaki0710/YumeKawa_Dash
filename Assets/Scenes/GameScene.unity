@@ -265,7 +265,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.021493418, g: 0.12636141, b: 0.1981132, a: 0}
+  m_BackGroundColor: {r: 0.7372549, g: 0.91764706, b: 0.972549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -314,8 +314,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.284609, y: 0.42631528, z: -0.1433121, w: 0.84659004}
-  m_LocalPosition: {x: -12.479775, y: 11.955509, z: -10.041637}
+  m_LocalRotation: {x: 0.18301506, y: 0.4595434, z: -0.097348675, w: 0.8636253}
+  m_LocalPosition: {x: -9.777946, y: 6.5827236, z: -6.828063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -645,7 +645,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 806255960cdc8b140aa3c4f05e4a940b, type: 2}
+  - {fileID: 2100000, guid: 9d7290f06af958945aa3d21269760669, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -733,9 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modulePrefabs:
   - {fileID: 400452413455336900, guid: 09cd9e684f4f35b4da1d6838ab7128d7, type: 3}
-  - {fileID: 400452413455336900, guid: c711c26db73a23542bdce0b84f2de3b2, type: 3}
-  - {fileID: 400452413455336900, guid: 6fc1c3663c4548b438620452a30cbc69, type: 3}
-  spawnInterval: 7
+  spawnInterval: 6.5
 --- !u!4 &1887714190
 Transform:
   m_ObjectHideFlags: 0
