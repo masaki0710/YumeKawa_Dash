@@ -12,4 +12,17 @@
 - Space: Jump
   - 長押しでジャンプ力上昇
 
-![slide](./slide.png)
+![slide](./slide/1.png)
+
+![slide](./slide/2.png)
+
+![slide](./slide/3.png)
+
+![slide](./slide/4.png)
+
+![slide](./slide/5.png)
+
+![slide](./slide/6.png)
+
+![slide](./slide/7.png)
+
