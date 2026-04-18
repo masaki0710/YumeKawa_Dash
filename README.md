@@ -11,3 +11,5 @@
 - D: 右
 - Space: Jump
   - 長押しでジャンプ力上昇
+
+[PDF](./slide.pdf)
