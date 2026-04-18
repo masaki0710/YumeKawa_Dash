@@ -12,4 +12,4 @@
 - Space: Jump
   - 長押しでジャンプ力上昇
 
-[PDF](./slide.pdf)
+![slide](./slide.png)
